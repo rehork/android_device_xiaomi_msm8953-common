@@ -60,14 +60,41 @@ fi
 
 function blob_fixup() {
     case "${1}" in
+        product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml | product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml)
+            sed -i 's/version="2.0"/version="1.0"/g' "${2}"
+            ;;
+        system_ext/etc/init/dpmd.rc)
+            sed -i "s|/system/product/bin/|/system/system_ext/bin/|g" "${2}"
+            ;;
+        system_ext/etc/permissions/com.qti.dpmframework.xml \
+        | system_ext/etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml \
+        | system_ext/etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml \
+        | system_ext/etc/permissions/com.qualcomm.qti.imscmservice-V2.2-java.xml \
+        | system_ext/etc/permissions/dpmapi.xml \
+        | system_ext/etc/permissions/telephonyservice.xml )
+            sed -i "s|/system/product/framework/|/system/system_ext/framework/|g" "${2}"
+            ;;
+        system_ext/etc/permissions/embms.xml)
+            sed -i "s|/product/framework/|/system_ext/framework/|g" "${2}"
+            ;;
+        system_ext/etc/permissions/qcrilhook.xml)
+            sed -i 's|/product/framework/qcrilhook.jar|/system_ext/framework/qcrilhook.jar|g' "${2}"
+            ;;
+        system_ext/lib64/libdpmframework.so)
+            grep -q "libcutils_shim.so" "${2}" || "${PATCHELF}" --add-needed "libcutils_shim.so" "${2}"
+            ;;
+        system_ext/lib64/lib-imsvideocodec.so)
+            grep -q "libgui_shim.so" "${2}" || "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
+            ;;
         vendor/lib/mediadrm/libwvdrmengine.so|vendor/lib64/mediadrm/libwvdrmengine.so)
             "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
+            ;;
+        vendor/lib64/libsettings.so)
+            "${PATCHELF}" --replace-needed "libprotobuf-cpp-full.so" "libprotobuf-cpp-full-v29.so" "${2}"
             ;;
         vendor/lib64/libwvhidl.so)
             "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
             ;;
-        lib/libwfdmmsink.so)
-            "${PATCHELF}" --add-needed "libshim_wfdmmsink.so" "${2}"
     esac
 }
 
@@ -75,7 +102,7 @@ if [ -z "${ONLY_TARGET}" ]; then
     # Initialize the helper for common device
     setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true "${CLEAN_VENDOR}"
 
-    extract "${MY_DIR}/proprietary-files-qc.txt" "${SRC}" "${KANG}" --section "${SECTION}"
+    extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
 fi
 
 if [ -z "${ONLY_COMMON}" ] && [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
