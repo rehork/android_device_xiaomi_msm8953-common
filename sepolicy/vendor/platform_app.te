@@ -1,2 +1,15 @@
 # FPS Info
 allow platform_app sysfs_fps:file { getattr open read };
+allow platform_app sysfs_graphics:dir search;
+allow platform_app sysfs_zram:dir { search };
+
+allow platform_app system_app_data_file:dir getattr;
+# Face Unlock
+get_prop(platform_app, camera_prop)
+
+# System Info
+allow platform_app sysfs_battery_supply:dir { search };
+allow platform_app sysfs_kgsl:file { read open getattr ioctl };
+allow platform_app sysfs_battery_supply:file { read open getattr ioctl };
+allow platform_app hal_alarm_qti_default:binder call;
+allow platform_app hal_alarm_qti_hwservice:hwservice_manager find;

@@ -1,2 +1,11 @@
 allow rild rild_file:file r_file_perms;
 allow rild qtidataservices_app:binder call;
+
+dontaudit rild tombstone_data_file:dir search;
+dontaudit rild vendor_file:file ioctl;
+
+set_prop(rild, deviceid_prop)
+
+binder_call(rild, qtidataservices_app)
+add_hwservice(rild, hal_rilnv_hwservice)
+allow rild hal_rilnv_hwservice:hwservice_manager { add find };

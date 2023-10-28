@@ -1,2 +1,13 @@
 # Dirac
 type dirac_prop, property_type;
+type thermal_engine_prop, property_type;
+type vendor_power_prop, property_type;
+
+
+# Fingerprint
+vendor_restricted_prop(vendor_fp_prop)
+# Camera
+type vendor_camera_prop, property_type;
+
+# Power HAL
+system_public_prop(power_prop)
