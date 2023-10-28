@@ -28,7 +28,13 @@
 #
 on early-init
     write /proc/sys/kernel/sched_boost 1
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
+    mkdir /firmware 0771 system system
+    mkdir /system 0777 root root
+    mkdir /bt_firmware 0771 system system
     symlink /data/tombstones /tombstones
+    mkdir /dsp 0771 media media
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -42,6 +48,13 @@ on fs
     restorecon_recursive /mnt/vendor/persist
 
 on init
+    # Setup permission for Power HAL
+    chown system system /dev/stune/top-app/schedtune.boost
+    chown system system /dev/cpu_dma_latency
+
+    chmod 0664 /dev/stune/top-app/schedtune.boost
+    chmod 0664 /dev/cpu_dma_latency
+
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
     write /dev/stune/top-app/schedtune.sched_boost_no_override 1
     write /dev/stune/schedtune.colocate 0
@@ -65,6 +78,7 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
+    mkdir /data/misc/dts 0770 media audio
     mkdir /persist/qti_fp 0700 system system
     mkdir /data/misc/audio_pp 0771 media audio
 
@@ -74,7 +88,7 @@ mkdir /data/misc/camera 0770 camera camera
 
 #start camera server as daemon
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
-    class late_start
+    class main
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/system-background/tasks
@@ -129,14 +143,14 @@ service wcnss-service /system/vendor/bin/wcnss_service
 
 service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
-    user system
+    user radio
     socket ims_qmid stream 0660 system radio
     group radio log diag
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
-    user system
+    user radio
     socket ims_datad stream 0660 system radio
     group system wifi radio inet log diag
     writepid /dev/cpuset/system-background/tasks
@@ -147,13 +161,13 @@ on property:vendor.ims.QMI_DAEMON_STATUS=1
 
 service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    class main
-   user system
+   user radio
    group radio diag inet log
    writepid /dev/cpuset/system-background/tasks
 
 service vendor.imsrcsservice /system/vendor/bin/imsrcsd
    class main
-   user system
+   user radio
    group radio diag inet log wakelock
    writepid /dev/cpuset/system-background/tasks
 
@@ -189,12 +203,23 @@ service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     user root
     group system wakelock
 
+service vendor.power_off_alarm /vendor/bin/power_off_alarm
+    class core
+    group system
+    disabled
+    oneshot
+
 on charger
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
+    setprop sys.usb.configfs 1
+    setprop persist.sys.usb.config mass_storage
     start vendor.hvdcp_opti
-    start thermal-engine
+    start vendor.power_off_alarm
+    restart thermal-engine
+    chown system system /sys/class/leds/red/brightness
+    write /sys/class/leds/red/brightness 255
 
 on boot
     # add a cpuset for the camera daemon
@@ -207,6 +232,15 @@ on boot
     chmod 0664 /dev/cpuset/camera-daemon/tasks
     chown system system /sys/kernel/hbtp/display_pwr
 
+	#smartcharging
+    chown system system /sys/class/power_supply/battery/input_suspend	
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+	chmod 0660 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/charging_enabled
+
+ # Change permissions for /dev/diag
+    chmod 0666 /dev/diag
+
 # access permission for wlan
     chown system system /mnt/vendor/persist/WCNSS_qcom_wlan_nv.bin
 
@@ -218,6 +252,11 @@ on boot
     setprop vendor.usb.rmnet.func.name "rmnet_bam"
     setprop vendor.usb.rmnet.inst.name "rmnet"
     setprop vendor.usb.dpl.inst.name "dpl"
+
+# Add for DT2W
+    chown system system /sys/touchpanel/double_tap
+    chown system system /proc/touchpanel/wakeup_gesture
+    chmod 0660 /proc/touchpanel/wakeup_gesture
 
 # FPS Info
     chown system graphics /sys/class/graphics/fb0/measured_fps
