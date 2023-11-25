@@ -25,6 +25,9 @@ vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_BGGR.so|3f82d78a7c9e88c5fdc02dc0761349e4a
 vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_RGGB.so|b21151ad414cd7310117fceb924a72fd20e97257
 vendor/lib/rfsa/adsp/libapps_mem_heap.so|5c82ad9cfe3f30105d899e2a4e90cc7566f81252
 vendor/lib/rfsa/adsp/libdirac-capiv2.so
+vendor/lib/rfsa/adsp/dirac_resource.so
+vendor/lib/rfsa/adsp/libadsp_fd_skel.so
+vendor/lib/rfsa/adsp/libdirac_capiv2ext.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so|628985174b0088bed21c866d7984d23855e5e150
 vendor/lib/rfsa/adsp/libfastcvadsp.so|9818625bfa018f517e32a8f4a1e7fb4b255e5049
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so|1ff4a48009e88435d93fd2b9b0c5ea59cedbb4f7
@@ -261,6 +264,11 @@ vendor/lib64/libsecureui.so|dc3ccde15c3bdbc14da9fdc63dbf30973c5fe1b1
 vendor/lib64/libsecureui_svcsock.so|a7fdcd8001d4cdd9a30eb1ccc129324c398cc203
 vendor/lib64/libssd.so|33d717f793c2579e3bd17b5ce6534cb68c12887d
 
+# DRM
+vendor/lib64/libops.so
+vendor/lib64/libspl.so
+
+
 # Gatekeeper - from daisy
 vendor/lib/hw/gatekeeper.msm8953.so|cd04140788659ae07a50081baeb3eb2e42f37028
 vendor/lib64/hw/gatekeeper.msm8953.so|1086e5dcda7aa2bed7ac015f7850095f6199a1c2
@@ -393,6 +401,8 @@ vendor/firmware/a530_pm4.fw|5741a28752355b478d455635bab008028ff7e1c6
 
 # Ipacm - from daisy
 vendor/bin/ipacm-diag|9300f8da22941c2bfacc2ff96f83f2beebd4dcc1
+vendor//bin/ipacm-diag.rc
+
 
 # Keystore - from daisy
 vendor/lib/hw/keystore.msm8953.so|c56d3768e04fc180d844dbca94be8c27770e37d5
@@ -407,41 +417,49 @@ vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|175371fdae2fe46606113497621
 vendor/lib64/vendor.qti.latency@2.0.so|1589280034898a0ab3052234ef90b7c674d5be5b
 
 # Listen - from daisy
-vendor/lib/hw/sound_trigger.primary.msm8953.so|991e0be9c5743d5d3394eb2f4b82740c3c0616f7
-vendor/lib/libadpcmdec.so|be5fdf08a08b635816381e61b6bbf2874c62f613
-vendor/lib/libgcs-calwrapper.so|96178681d6704bb457f006f9fa8b6bcc71513c8a
-vendor/lib/libgcs-ipc.so|05f718e7bf68b31ca1199f8812046234c00d9a3e
-vendor/lib/libgcs-osal.so|2daf1f34a595d218af88c79285743bafa2145e20
-vendor/lib/libgcs.so|8aac6d5adc83d1cf4b7346304b350b2a18920c44
-vendor/lib/liblistenjni.so|1a7273acbd33b6e5d3c7dd0957da2fdc903acc85
-vendor/lib/liblistensoundmodel2.so|d645cf28571a6cbe867b15dd1665822c713ec35e
-vendor/lib/libsmwrapper.so|efed6475b26cafc15fed591a9aaa68b38cf6a37b
-vendor/lib64/hw/sound_trigger.primary.msm8953.so|4ff47ab34dfd457a57a5bede70769fbbc63c240e
-vendor/lib64/libgcs-calwrapper.so|4d93fcb19b26033d4c76a8db04963e3be930b254
-vendor/lib64/libgcs-ipc.so|5854e7814fdcedcb2cb859858df0bce835afc3b3
-vendor/lib64/libgcs-osal.so|d2a09b2298c9cd1daa1d6573f244e5286fd984eb
-vendor/lib64/libgcs.so|e15de14c593069ea32dbdc304a3d604be8cc0896
-vendor/lib64/liblistenjni.so|4814b09f1d0c8d17516d1c6df7687b992311a884
-vendor/lib64/liblistensoundmodel2.so|13b37cbd54943834676872f534e6a51505bbcea7
+vendor/lib/hw/sound_trigger.primary.msm8953.so
+vendor/lib/libadpcmdec.so
+vendor/lib/libgcs-calwrapper.so
+vendor/lib/libgcs-ipc.so
+vendor/lib/libgcs-osal.so
+vendor/lib/libgcs.so
+vendor/lib/liblistenjni.so
+vendor/lib/liblistensoundmodel2.so
+vendor/lib/libsmwrapper.so
+vendor/lib64/hw/sound_trigger.primary.msm8953.so
+vendor/lib64/libgcs-calwrapper.so
+vendor/lib64/libgcs-ipc.so
+vendor/lib64/libgcs-osal.so
+vendor/lib64/libgcs.so
+vendor/lib64/liblistenjni.so
+vendor/lib64/liblistensoundmodel2.so
 
-# Media - from nokia
-vendor/lib/libI420colorconvert.so|5a7726bbd8c7343e05d6251185fa72ed27b3da5c
+# Media 
+vendor/etc/seccomp_policy/mediacodec.policy|c323cdda96d0cb27cb300dd33b2c6a7aa3b1e89c
+vendor/etc/seccomp_policy/mediaextractor.policy|f8f95a8a0af0df5c9d3773a8c48b0a883eccee09
+vendor/lib/libFlacSwDec.so|7d661ac115de794bc6f6f7d20d4f93735b698c52
+vendor/lib/libI420colorconvert.so|614d06a46e2f5330ca62cb9172b550cdb06e89c3
 vendor/lib/libmm-color-convertor.so|7e1536ab3926ece1da6c6a73cb5b1635f75762c7
-vendor/lib/libmmosal.so|e23d6d1b2a035c08ffd7ac72d5241ebff37f0d14
-vendor/lib/libOmxAmrwbplusDec.so|e253c2b068f0a3295796f9912d9906cc29b336d7
-vendor/lib/libOmxApeDec.so|052e5b93b034a8bb109e4b0ffccd6aa06c2b2bba
+vendor/lib/libOmxAacDec.so|c5b9f79f6bbb8f5417c43e5f0ac53d3e7b5eba14
+vendor/lib/libOmxAmrDec.so|c8d76c20b5bd093139a475c3681be2da5ee75539
+vendor/lib/libOmxAmrwbplusDec.so|1866b314cbf2a50fe98d01475e6db0612eba53d3
+vendor/lib/libOmxApeDec.so|30543497be7a6604fbcfbae78e132260254674f9
 vendor/lib/libOmxApeDecSw.so|076e4092433cf2422c71594c7f4a418f32408f56
-vendor/lib/libOmxEvrcDec.so|99202c934d1fdd1e428527019b7dc92dde40edc6
-vendor/lib/libOmxQcelp13Dec.so|4424762bcf639284112395b4c9d63cb58c799638
-vendor/lib/libOmxVideoDSMode.so|71c4f23de93e91931c077ed511301185152422da
-vendor/lib/libOmxWmaDec.so|c47e74a73afa486429c009f338779cd78566f77c
+vendor/lib/libOmxDsdDec.so|b8697801e414e51ea488505bb4b94567e882585d
+vendor/lib/libOmxEvrcDec.so|9102aea245e0c151dd204a9bd9553b79f267f90d
+vendor/lib/libOmxG711Dec.so|d659de6d65c462d4d37489edc5571f6e272d029a
+vendor/lib/libOmxQcelp13Dec.so|e05e83f66b0126040aa9a6145e78e7a51d053f21
+vendor/lib/libOmxVideoDSMode.so|c51fc2b34b6607f4238bfdf54e9c58da6ef8e2ce
+vendor/lib/libOmxVpp.so|6dc1215bc73ff3147b75c0f61a0845c6fab69262
+vendor/lib/libOmxWmaDec.so|bc2a4a87b538ccd6004d6269a42bbef9a84ad7c4
+vendor/lib/libmm-color-convertor.so|4e45f1923c74b5c61908b2720527c68056dff321
+vendor/lib/libvpplibrary.so|d2c1ccc490c19982f8d64ae439e963fbaee25a23
 vendor/lib/libvqzip.so|f85628ea634df1c31d69380d960ad7ea3396e7b2
+vendor/lib64/libmm-color-convertor.so|26ed405a100be543e39e0720ce7ee49ce7148f49
+vendor/lib64/libvpplibrary.so|0308510be8b2ea4cb8ba7278ad249eea53f3fb2c
 vendor/lib64/libI420colorconvert.so|e00f84027fb2628055310d26a4fc970434a60648
 vendor/lib64/libmm-color-convertor.so|26ed405a100be543e39e0720ce7ee49ce7148f49
-vendor/lib64/libmmosal.so|e9fdb48163e92b089cea0c397723a8416436c272
 vendor/lib64/libOmxAacDec.so|5d939a384e01caba6d1043dc94cb23a7eb116fe8
-vendor/lib64/libOmxAlacDec.so|77157cfa1580b85c8d5dfdff1b219ad4d870350d
-vendor/lib64/libOmxAlacDecSw.so|03514dfb643466d9532b1f02c1cfa31043fedeca
 vendor/lib64/libOmxAmrDec.so|f143c5cc4569f2e5ab255b8571b6ee65e0c53e35
 vendor/lib64/libOmxAmrwbplusDec.so|7ac422b718b5adb756efa69e41adacaee59f287a
 vendor/lib64/libOmxApeDec.so|6a18b3420d2b58047b83f68d117a012dce7110a4
@@ -449,6 +467,8 @@ vendor/lib64/libOmxApeDecSw.so|cd6874e2be4bbddc74e70bad8acebc5a9dbcb355
 vendor/lib64/libOmxEvrcDec.so|67da9d405b33c9a1058ee2bcb12ea489f37d5961
 vendor/lib64/libOmxQcelp13Dec.so|842f2285c1eb76827a3b8bd0b574aee86ad1d1bd
 vendor/lib64/libOmxWmaDec.so|7e5dab018bbab16566315dcc61682a196a25f0ba
+
+
 
 # Modem
 vendor/lib/libwms.so
@@ -474,6 +494,7 @@ vendor/lib64/libperfgluelayer.so|269245742c7628539e9d86a1fa4b9ba2551774e3
 vendor/lib64/libqti-perfd-client.so|94ab278009a42e75c1d62f6dfc41d85b0cc1f412
 vendor/lib64/libqti-perfd.so|f252bc957f45dd389463abe97be3f0f129da8b67
 vendor/lib64/libqti-util.so|e790b62bb198442145fcba20c2dc61d182c45a47
+vendor/lib64/libqti-utils.so
 vendor/bin/msm_irqbalance
 vendor/etc/msm_irqbalance.conf
 vendor/etc/msm_irqbalance_little_big.conf
@@ -566,6 +587,7 @@ system_ext/lib64/libdiag_system.so|2ffbf7432be7aec6362c547dce4574d53349e1d8
 system_ext/lib64/vendor.qti.diaghal@1.0.so|c188fabf49a0fc8bfede65a701c6a8dc1a5aef40
 vendor/lib/libdiag.so|b9fc5054944f7b09ceed526cc3572525b70aa61a
 vendor/lib64/libdiag.so|06dd481a7563f492713db4f2e3bc45ee581179ec
+
 
 # Radio - from nokia
 -system_ext/app/QtiTelephonyService/QtiTelephonyService.apk:system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
@@ -739,23 +761,24 @@ vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so|ac8045bd314d9cb8712029
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so|25517caf74691b812320b46b477a3f4161cc1bcf
 
 # Sensors - from daisy
-vendor/bin/sensors.qti|a2294878cef6ab4a6e51968e88799585c7d456fd
-vendor/lib/hw/activity_recognition.msm8953.so|f9247646a5e2b28473753da06f832ae5f702f7c4
-vendor/lib/libsensor1.so|48727a05c1b91051d5ec53860124f1f1c0d8ca53
-vendor/lib/libsensor_reg.so|8ae3b9d1a54feb9f0af55a8fff50410f53660318
-vendor/lib/libsensor_user_cal.so|df85342393b56994b4f4b4c33aad97928bc6f023
-vendor/lib/sensors.ssc.so|c4b5ee167e5b06fde7143007b87ea5dbe90b0565
-vendor/lib64/hw/activity_recognition.msm8953.so|5531da4cf2451f899602fb7e3f0e80775bb7e5ff
-vendor/lib64/libsensor1.so|48dedf69781fb146fc35e622f1c80a635530da22
-vendor/lib64/libsensor_reg.so|74659858f5abcfa0d8c826af2e2e46addc9f5f87
-vendor/lib64/libsensor_user_cal.so|92de798c64f9e23ca1069a5a4bec5895fafa9a22
-vendor/lib64/sensors.ssc.so|3d6eed945ab3ec2d91517cd6e9941df17a290445
+vendor/bin/sensors.qti
+vendor/etc/sensors/hals.conf
+vendor/lib/hw/activity_recognition.msm8953.so
+vendor/lib/libsensor1.so
+vendor/lib/libsensor_reg.so
+vendor/lib/libsensor_user_cal.so
+vendor/lib/sensors.ssc.so
+vendor/lib64/hw/activity_recognition.msm8953.so
+vendor/lib64/libsensor1.so
+vendor/lib64/libsensor_reg.so
+vendor/lib64/libsensor_user_cal.so
+vendor/lib64/sensors.ssc.so
 
 # Thermal - from daisy
-vendor/bin/thermal-engine|bbf772d4acf6c11413d2f728140aae63a49d3eae
--vendor/lib/libthermalclient.so|523476e106337823696f0600b48f057d8c629465
--vendor/lib64/libthermalclient.so|796c3e071fe9d6fa57598e1205a762cb55720f88
-vendor/lib64/libthermalioctl.so|6eed5b8ca6989809eac27abd4af19bbd6f3845ee
+vendor/bin/thermal-engine
+-vendor/lib/libthermalclient.so
+-vendor/lib64/libthermalclient.so
+vendor/lib64/libthermalioctl.so
 vendor/lib64/libthermalfeature.so
 
 # Time services - from daisy

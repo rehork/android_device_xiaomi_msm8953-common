@@ -7,10 +7,11 @@ cc_defaults {
         "service.cpp",
     ],
     shared_libs: [
+        "libbase",
         "libcutils",
-        "liblog",
-        "libhidlbase",
         "libhardware",
+        "libhidlbase",
+        "liblog",
         "libutils",
         "android.hardware.biometrics.fingerprint@2.1",
     ],

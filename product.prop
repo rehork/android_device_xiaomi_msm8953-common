@@ -4,3 +4,4 @@
 
 # Default to BFQ I/O scheduler
 persist.sys.io.scheduler=bfq
+ro.telephony.block_binder_thread_on_incoming_calls=false
