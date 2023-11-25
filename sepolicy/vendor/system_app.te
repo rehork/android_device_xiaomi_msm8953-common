@@ -5,6 +5,9 @@ r_dir_file(system_app sysfs_zram);
 allow system_app sysfs_zram:dir search;
 allow system_app sysfs_zram:file r_file_perms;
 
+allow system_app proc_pagetypeinfo:file r_file_perms;
+allow system_app proc_vmallocinfo:file r_file_perms;
+
 # Battery Health
 allow system_app sysfs_battery_supply:dir { search };
 allow system_app sysfs_battery_supply:file { read };
@@ -13,4 +16,3 @@ allow system_app sysfs_battery_supply:file { getattr };
 
 binder_call(system_app, wificond);
 allow system_app fm_radio_device:chr_file r_file_perms;
-

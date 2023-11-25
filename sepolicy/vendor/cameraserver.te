@@ -1,3 +1,6 @@
+binder_call(cameraserver, mediacodec)
+allow cameraserver same_process_hal_file:file { execute getattr open read };
+allow cameraserver vendor_persist_camera_prop:file read;
 allow cameraserver camera_data_file:dir { search write add_name };
 allow cameraserver camera_data_file:file { create write open };
 allow cameraserver mediacodec:binder call;

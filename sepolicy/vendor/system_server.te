@@ -10,6 +10,7 @@ get_prop(system_server, exported_camera_prop);
 get_prop(system_server, userspace_reboot_exported_prop);
 get_prop(system_server, userspace_reboot_config_prop);
 
+
 # Smart charging
 allow system_server sysfs_battery_supply:file { getattr open read write };
 
@@ -26,9 +27,9 @@ allow system_server userspace_reboot_config_prop:file { open read getattr };
 allow system_server exported_camera_prop:file { open read getattr };
 
 # Camera
-allow system_server camera_prop:file { open read getattr };
-allow system_server exported_camera_prop:file { read };
-allow system_server mm-qcamerad:binder { call };
+#allow system_server camera_prop:file { open read getattr };
+#allow system_server exported_camera_prop:file { read };
+#allow system_server mm-qcamerad:binder { call };
 
 # Touch Panel
 allow system_server proc_touchpanel:dir search;
@@ -37,7 +38,4 @@ allow system_server proc_touchpanel:lnk_file read;
 
 
 # vibrator
-allow system_server sysfs_vibrator:file read;
-
-# zygote
-allow system_server app_zygote:process getpgid;
+#allow system_server sysfs_vibrator:file read;

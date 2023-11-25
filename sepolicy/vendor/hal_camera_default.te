@@ -2,6 +2,9 @@ allow hal_camera_default camera_data_file:sock_file write;
 
 allow hal_camera_default proc_stat:file read;
 
+
+allow hal_camera_default camera_data_file:sock_file write;
+
 allow hal_camera_default socket_device:sock_file write;
 allow hal_camera_default proc_stat:file { open };
 # Allow hal_camera_default to search in mnt/vendor

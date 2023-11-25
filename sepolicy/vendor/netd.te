@@ -1,2 +1,3 @@
 allow netd system_file:dir { add_name };
 allow netd proc_net:file{ open };
+allow netd proc_net:file create;
