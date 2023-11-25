@@ -1,16 +1,25 @@
+//
+// Copyright (C) 2021-2022 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
 cc_binary {
     name: "android.hardware.lights-service.xiaomi_msm8953",
     relative_install_path: "hw",
     init_rc: ["lights-xiaomi_msm8953.rc"],
     vintf_fragments: ["lights-xiaomi_msm8953.xml"],
-    vendor: true,
+    srcs: [
+        "Backlight.cpp",
+        "Lights.cpp",
+        "LED.cpp",
+        "Utils.cpp",
+        "service.cpp",
+    ],
     shared_libs: [
         "libbase",
         "libbinder_ndk",
         "android.hardware.light-ndk_platform",
     ],
-    srcs: [
-        "Lights.cpp",
-        "main.cpp",
-    ],
+    vendor: true,
 }
