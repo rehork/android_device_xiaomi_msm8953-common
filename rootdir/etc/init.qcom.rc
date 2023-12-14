@@ -592,7 +592,7 @@ on charger
 # Notification LED
     chown system system /sys/class/leds/red/brightness
     write /sys/class/leds/red/brightness 255
-    start qcom-post-boot
+    start vendor.qcom-post-boot
 
 #Mixed HWC versions among targets
 on property:init.svc.surfaceflinger=restarting

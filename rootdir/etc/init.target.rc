@@ -259,3 +259,7 @@ service ppd /vendor/bin/mm-pp-dpps
     group system graphics
     socket pps stream 0660 system system
     disabled
+    
+# Telephony default network
+on property:ro.multisim.default_network=*
+   setprop ro.telephony.default_network ${ro.multisim.default_network}
