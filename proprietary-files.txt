@@ -400,8 +400,8 @@ vendor/firmware/a530_pfp.fw|448f9db8271fefb08348cbc50409e8e95bd93f78
 vendor/firmware/a530_pm4.fw|5741a28752355b478d455635bab008028ff7e1c6
 
 # Ipacm - from daisy
-vendor/bin/ipacm-diag|9300f8da22941c2bfacc2ff96f83f2beebd4dcc1
-vendor//bin/ipacm-diag.rc
+vendor/bin/ipacm-diag
+vendor/bin/ipacm-diag.rc
 
 
 # Keystore - from daisy

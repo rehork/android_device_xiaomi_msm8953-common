@@ -1,3 +1,6 @@
+# App
+ro.launcher.blur.appLaunch=0
+
 # QC framework value-adds
 ro.vendor.qti.va_aosp.support=1
 
@@ -44,7 +47,6 @@ ro.lmk.log_stats=false
 
 # Media
 av.debug.disable.pers.cache=1
-media.aac_51_output_enabled=true
 media.msm8956hw=0
 mm.enable.sec.smoothstreaming=true
 mmp.enable.3g2=true
@@ -55,7 +57,7 @@ vendor.vidc.dec.downscalar_width=1920
 vendor.vidc.disable.split.mode=1
 vendor.vidc.enc.disable_bframes=1
 vendor.vidc.enc.disable.pq=true
-vendor.video.disable.ubwc=1
+#vendor.video.disable.ubwc=1
 
 # NTP
 persist.backup.ntpServer=0.pool.ntp.org
