@@ -4,6 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Apex
+PRODUCT_COMPRESSED_APEX := false
+
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
@@ -29,6 +32,7 @@ TARGET_SCREEN_WIDTH := 1080
 # Board
 PRODUCT_USES_QCOM_HARDWARE := true
 PRODUCT_BOARD_PLATFORM := msm8953
+# Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
@@ -148,7 +152,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0.vendor \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor
+    vendor.qti.hardware.btconfigstore@1.0.vendor \
+    android.hardware.bluetooth.a2dp@1.0-impl \
+    android.hardware.bluetooth.a2dp@1.0-service
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -294,11 +300,17 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
+   vendor.lineage.livedisplay@2.0-service-sdm \
+   vendor.lineage.livedisplay@2.0-service-sysfs
 
 # Media
 PRODUCT_PACKAGES += \
-    android.hardware.media.c2@1.1.vendor
+ android.hardware.media.c2@1.1 \
+    android.hardware.media.c2@1.1.vendor \
+    libavmediaserviceextensions \
+    libmediametrics \
+    libregistermsext \
+    mediametrics
 
 
 PRODUCT_COPY_FILES += \
@@ -318,6 +330,26 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libnbaio
 
+
+# Codec2 modules
+PRODUCT_PACKAGES += \
+    com.android.media.swcodec \
+    libsfplugin_ccodec
+
+# C2 codecs
+PRODUCT_PACKAGES += \
+    libcodec2_soft_avcdec \
+    libcodec2_soft_avcenc \
+    libcodec2_soft_h263dec \
+    libcodec2_soft_h263enc \
+    libcodec2_soft_mpeg4dec \
+    libcodec2_soft_mpeg4enc \
+    libcodec2_soft_vp8dec \
+    libcodec2_soft_vp8enc \
+    libcodec2_soft_vp9dec \
+    libcodec2_soft_vp9enc \
+    libcodec2_soft_hevcdec \
+    libcodec2_soft_hevcenc
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -416,8 +448,8 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh
 
 # RenderScript HAL
-#PRODUCT_PACKAGES += \
-#   android.hardware.renderscript@1.0-impl
+PRODUCT_PACKAGES += \
+  android.hardware.renderscript@1.0-impl
 
 # RIL
 PRODUCT_PACKAGES += \
