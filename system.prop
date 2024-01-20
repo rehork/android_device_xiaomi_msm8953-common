@@ -102,5 +102,3 @@ persist.fuse_sdcard=true
 # Time
 persist.timed.enable=true
 
-# Watchdog
-ro.hw_timeout_multiplier=10
