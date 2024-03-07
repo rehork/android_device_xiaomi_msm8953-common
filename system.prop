@@ -92,6 +92,7 @@ ril.subscription.types=NV,RUIM
 ro.telephony.call_ring.multiple=false
 service.qti.ims.enabled=1
 telephony.lteOnCdmaDevice=1
+ro.telephony.handle_audio_direction_changes_between_call_state_changes=false
 
 # Tcp
 net.tcp.2g_init_rwnd=10
