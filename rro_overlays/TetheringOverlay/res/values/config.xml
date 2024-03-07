@@ -19,7 +19,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-      <!-- Dhcp range (min, max) to use for tethering purposes -->
+    <!-- Dhcp range (min, max) to use for tethering purposes -->
     <string-array translatable="false" name="config_tether_dhcp_range">
         <item>192.168.42.2</item>
         <item>192.168.42.254</item>
@@ -42,5 +42,4 @@
         <item>192.168.51.2</item>
         <item>192.168.51.254</item>
     </string-array>
-
 </resources>
