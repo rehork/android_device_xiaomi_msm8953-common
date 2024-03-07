@@ -472,7 +472,7 @@ service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     group vendor_qrtr
     capabilities NET_BIND_SERVICE
 
-service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
@@ -521,7 +521,7 @@ service vendor.sensors.qti /vendor/bin/sensors.qti
     # Grants the ability for this daemon to bind IPC router ports so it can
     # register QMI services
     capabilities NET_BIND_SERVICE
-    
+    task_profiles ServiceCapacityLow
 
 on property:ro.vendor.use_data_netmgrd=false
     # netmgr not supported on specific target
@@ -594,7 +594,6 @@ on charger
     chown system system /sys/class/leds/red/brightness
     write /sys/class/leds/red/brightness 255
     start qcom-post-boot
-    start vendor.power_off_alarm
 
 #Mixed HWC versions among targets
 on property:init.svc.surfaceflinger=restarting
