@@ -22,3 +22,4 @@ vendor.powerhal.rendering      u:object_r:power_prop:s0
 
 # Radio
 persist.vendor.data.qmipriod_load        u:object_r:vendor_radio_prop:s0
+
