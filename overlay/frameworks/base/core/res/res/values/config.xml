@@ -514,14 +514,6 @@
      <!-- Blank Display After Doze -->
     <bool name="config_displayBlanksAfterDoze">true</bool>
 
-    <!-- Whether device supports sensor based doze customizations -->
-    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
-    <!--AlwaysOnDisplay disabled by default -->
-    <bool name="config_dozeAlwaysOnEnabled">false</bool>
-    <bool name="config_dozePulsePickup">false</bool>
-    <bool name="config_dozePulseTilt">false</bool>
-    <bool name="config_dozePulseProximity">false</bool>
-
     <!-- The max scale for the wallpaper when it's zoomed in -->
     <item name="config_wallpaperMaxScale" format="float" type="dimen">1.00</item>
 
@@ -586,6 +578,9 @@
     	  <!-- See AmbientSensor.AmbientColorTemperatureSensor.
          The ambient color temperature sensor name. -->
     <string name="config_displayWhiteBalanceColorTemperatureSensorName">com.google.sensor.color</string>
+
+    <!-- Remote server that can provide NTP responses. -->
+    <string translatable="false" name="config_ntpServer">pool.ntp.org</string>
 
     <!-- List supported color modes. -->
     <integer-array name="config_availableColorModes">
